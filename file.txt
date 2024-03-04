@@ -1,0 +1,81 @@
+strings = ['radar', 'hello', 'level', 'world', 'racecar']
+def greet(name)
+  puts "Hello, #{name}!"
+end
+greet("World")
+array_nums = [1, 2, 3, 4, 5]
+def sum(a, b)
+  return a + b
+end
+puts sum(3, 5) 
+def reverse_string(str)
+  return str.reverse
+end
+puts reverse_string("world")  
+def factorial(n)
+  result = 1
+  for i in 1..n do
+    result *= i
+  end
+  return result
+end
+puts " #{factorial(5)}"  
+def sum_up_to(n)
+  sum = 0
+  i = 1
+  while i <= n do
+    sum += i
+    i += 1
+  end
+  return sum
+end
+puts " #{sum_up_to(100)}"  
+def math_functions(x)
+  square_root = Math.sqrt(x)
+  sine_value = Math.sin(x)
+  return square_root, sine_value
+end
+number = 25
+sqrt_result, sin_result = math_functions(number)
+puts " #{sqrt_result}"
+puts " #{number}: #{sin_result}"
+def perform_operations(a, b)
+  a += b   
+  a -= b    
+  a *= b    
+  a %= b   
+  return a
+end
+x = 10
+y = 3
+result = perform_operations(x, y)
+puts " #{result}"  
+def max_of_three(a, b, c)
+  if a >= b && a >= c
+    return "#{a} max"
+  elsif b >= a && b >= c
+    return "#{b} max"
+  else
+    return "#{c} max"
+  end
+end
+puts max_of_three(10, 5, 8)      
+def positive_and_even(number)
+  if number > 0 && number % 2 == 0
+    return "#{number} positive and even"
+  else
+    return "#{number} does not meet the conditions"
+  end
+end
+puts positive_and_even(9)
+
+case x
+when 1..5
+  "It's between 1 and 5"
+when 6
+  "It's 6"
+else
+  "You gave me #{x} -- I have no idea what to do with that."
+end
+x = 5
+rt = 1 * (x + 1)
