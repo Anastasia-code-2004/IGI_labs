@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block title %}Отзывы{% endblock title %}
+{% block header %}Отзывы{% endblock header %}
+{% block content %}
+<form method="post" action="{% url 'add_review' %}">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Отправить отзыв</button>
+</form>
+{% for i in all_items %}
+    <h3>{{ i.name }}</h3>
+    <p>{{ i.rating }}</p>
+    <p>{{ i.text }}</p>
+    <p>{{ i.date }}</p>
+{% endfor %}
+{% endblock content %}

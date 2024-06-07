@@ -1,0 +1,40 @@
+{% extends "profile.html" %}
+{% block title %}Профиль{% endblock title %}
+{% block content %}
+    {{ block.super }}
+    <h1>Билеты</h1>
+    <a href="{% url 'stats' %}">Статистика</a>
+    <a href="{% url 'clients_and_purchases' %}">Клиенты</a>
+    <a href="{% url 'movies_and_sales' %}">Фильмы</a>
+    <a href="{% url 'edit_genres' %}" class="btn btn-primary">Редактировать жанры</a>
+    <form method="get">
+        <select name="movie" onchange="this.form.submit()">
+            <option value="">--Выберите фильм--</option>
+            {% for movie in movies %}
+                <option value="{{ movie.title }}" {% if movie.title == request.GET.movie %}selected{% endif %}>{{ movie.title }}</option>
+            {% endfor %}
+        </select>
+        <select name="showtime" onchange="this.form.submit()">
+            <option value="">--Выберите сеанс--</option>
+            {% for showtime in showtimes %}
+                <option value="{{ showtime.id }}" {% if showtime.id == request.GET.showtime %}selected{% endif %}>{{ showtime.start_time }}</option>
+            {% endfor %}
+        </select>
+        <input type="date" name="date" value="{{ request.GET.date }}" onchange="this.form.submit()">
+    </form>
+    <ul>
+    <h3>Сумма продаж: {{ total_sales|floatformat:2 }}</h3>
+    {% for ticket in tickets %}
+        <li>
+            <h2>Фильм: {{ ticket.showtime.movie.title }}</h2>
+            <h3>Клиент: {{ ticket.user.user.username }}</h3>
+            <p>Время начала: {{ ticket.showtime.start_time }}</p>
+            <p>Зал: {{ ticket.showtime.hall.name }}</p>
+            <p>Время покупки билета: {{ ticket.purchase_time }}</p>
+            <p>Стоимость билета: {{ ticket.price }}</p>
+        </li>
+    {% empty %}
+        <li>Нет купленных билетов.</li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

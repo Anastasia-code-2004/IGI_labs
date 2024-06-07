@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Default title{% endblock title %}</title>
+</head>
+<body>
+    <div><a href="{% url 'home' %}">Главная</a> | <a href="{% url 'news' %}">Новости</a> | 
+        <a href="{% url 'about_company' %}">О компании</a> | <a href="{% url 'contacts' %}">Контакты</a> | 
+        <a href="{% url 'faq' %}">Словарь терминов и понятий</a> | 
+        <a href="{% url 'privacy_policy' %}">Политика конфиденциальности</a> | 
+        <a href="{% url 'promo_coupons' %}">Промокоды и купоны</a> | 
+        <a href="{% url 'reviews' %}">Отзывы</a> | <a href="{% url 'vacancies' %}">Вакансии</a></div>
+    <div>
+        <a href="{% url 'index' %}">Time-zone</a> |
+        <a href="{% url 'movies' %}">Фильмы</a> |
+        <a href="{% url 'schedules' %}">Сеансы</a> |
+        <a href="{% url 'profile' %}">Мой профиль</a>
+    </div>
+    <h1>{% block header %}{% endblock header %}</h1>
+    <div>{% block content %}{% endblock content %}</div>
+</body>
+</html>

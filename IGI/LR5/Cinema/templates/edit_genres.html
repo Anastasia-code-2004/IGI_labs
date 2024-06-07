@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Жанры{% endblock title %}
+{% block header %}Жанры{% endblock header %}
+{% block content %}
+<form method="POST" action="/create_genre/">
+    {% csrf_token %}
+    <p>
+        <label>Введите название жанра</label><br>
+        <input type="text" name="name" />
+    </p>
+    <p>
+        <label>Введите описание жанра</label><br>
+        <textarea name="description"></textarea>
+    </p>
+    <input type="submit" value="Сохранить" >
+</form>
+{% if genres.count > 0 %}
+<h2>Список жанров</h2>
+<table>
+    {% for g in genres %}
+    <tr>
+        <td>{{ g.name }}</td>
+        <td>{{ g.description }}</td>
+        <td><a href="/edit_genre/{{g.id}}">Изменить</a> | <a href="/delete_genre/{{g.id}}">Удалить</a></td>
+    </tr>
+    {% endfor %}
+</table>
+{% endif %}
+{% endblock content %}

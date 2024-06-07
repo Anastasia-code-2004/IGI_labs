@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Фильмы{% endblock title %}
+{% block content %}
+    <h1>Фильмы</h1>
+    <form method="get">
+        <select name="genre" onchange="this.form.submit()">
+            <option value="">--Выберите жанр--</option>
+            {% for genre in all_genres %}
+                <option value="{{ genre.name }}" {% if genre.name == request.GET.genre %}selected{% endif %}>{{ genre.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    {% for movie in all_movies %}
+        <img src="{{ movie.poster.url }}" alt="" style="height:300px;">
+        <h2><a href="{% url 'movie_details' movie.id %}">{{ movie.title }}</a></h2>
+    {% endfor %}
+{% endblock content %}

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Фильм</title>
+</head>
+<body>
+    <h1>{{ movie.title }}</h1>
+    <img src="{{ movie.poster.url }}" alt="" style="height:300px;">
+    <p>{{ movie.description }}</p>
+    <p>Дата выпуска: {{ movie.date }}</p>
+    <p>Рейтинг: {{ movie.rating }}</p>
+    <p>Продолжительность: {{ movie.duration }} мин</p>
+    <p>Жанр: {% for genre in movie.genres.all %}{{ genre }}{% if not forloop.last %}, {% endif %}{% endfor %}</p>
+    <p>Страна(-ы): {{ movie.country }}</p>
+    <p>Бюджет: {{ movie.budget }} $ USD</p>
+    {% if tmdb_movie %}
+        <h2>Additional Details from TMDb</h2>
+        <p>Title: {{ tmdb_movie.title }}</p>
+        <p>Overview: {{ tmdb_movie.overview }}</p>
+        
+    {% endif %}
+</body>
+</html>

@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Ворос-ответ{% endblock title %}
+{% block header %}Ворос-ответ{% endblock header %}
+{% block content %}
+{% for i in all_items %}
+    <h3>{{ i.answer }}</h3>
+    <p>{{ i.question }}</p>
+    <p>{{ i.date_question }}</p>
+{% endfor %}
+{% endblock content %}

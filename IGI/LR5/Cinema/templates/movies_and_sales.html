@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Фильмы{% endblock title %}
+{% block content %}
+    <h1>Фильмы и их продажи</h1>
+    <table>
+        <tr>
+            <th>Фильм</th>
+            <th>Общая сумма продаж</th>
+        </tr>
+        {% for movie, total_sales in movies_and_sales %}
+        <tr>
+            <td>{{ movie.title }}</td>
+            <td>{{ total_sales }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <img src="{{ image_path }}" alt="График распределения продаж по фильмам">
+{% endblock content %}

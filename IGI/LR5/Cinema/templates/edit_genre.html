@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Изменить жанр{% endblock title %}
+{% block header %}Изменить жанр{% endblock header %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <p>
+        <label>Введите название жанра</label><br>
+        <input type="text" name="name" value="{{genre.name}}" />
+    </p>
+    <p>
+        <label>Введите описание жанра</label><br>
+        <textarea name="description">{{genre.description}}</textarea>
+    </p>
+    <input type="submit" value="Сохранить" >
+</form>
+{% endblock content %}

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock title %}
+{% block content %}
+    <h1>Главная</h1>
+    <h1>Добро пожаловать, 
+        {% if user.is_superuser %}
+            {{ user.username }}, вы вошли как суперпользователь
+        {% elif user.employee %}
+            {{ user.username }}, вы вошли как сотрудник
+        {% else %}
+            {{ user.username|default:'дорогой зритель' }}
+        {% endif %}
+    </h1>
+    
+    <div class="content">
+        <h2>Последняя новость</h2>
+        <h3>{{ latest_news.title }}</h3>
+        <img src="{{ latest_news.image.url }}" alt="" style="height:300px;">
+        <p>{{ latest_news.content }}</p>
+    </div>
+    <div class="content">
+        {% if quote %}
+            <h2>Цитата:</h2>
+            <p>{{ quote }}</p>
+        {% endif %}
+    </div>
+{% endblock content %}

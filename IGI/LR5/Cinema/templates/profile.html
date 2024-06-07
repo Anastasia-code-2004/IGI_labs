@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock title %}
+
+{% block content %}
+    <div class="content">
+      {% if user.is_authenticated %}
+        <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit">Выход</button>
+        </form>
+        {% if user.is_superuser %}
+            <form action="{% url 'admin:index' %}" method="get">
+                <button type="submit">Админ-панель</button>
+            </form>
+        {% endif %}
+      {% else %}
+          <form action="{% url 'signup' %}" method="get">
+              <button type="submit">Регистрация</button>
+          </form>
+          <form action="{% url 'login' %}" method="get">
+              {% csrf_token %}
+              <button type="submit">Вход</button>
+          </form>
+      {% endif %}
+    </div>
+{% endblock content %}

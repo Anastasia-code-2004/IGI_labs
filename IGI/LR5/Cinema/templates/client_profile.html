@@ -1,0 +1,19 @@
+{% extends "profile.html" %}
+{% block title %}Профиль{% endblock title %}
+{% block content %}
+    {{ block.super }}
+    <h1>Ваши билеты</h1>
+    <ul>
+    {% for ticket in tickets %}
+        <li>
+            <h2>Фильм: {{ ticket.showtime.movie.title }}</h2>
+            <p>Время начала: {{ ticket.showtime.start_time }}</p>
+            <p>Зал: {{ ticket.showtime.hall.name }}</p>
+            <p>Время покупки билета: {{ ticket.purchase_time }}</p>
+            <p>Стоимость билета: {{ ticket.price }}</p>
+        </li>
+    {% empty %}
+        <li>У вас нет купленных билетов.</li>
+    {% endfor %}
+    </ul>
+{% endblock content %}

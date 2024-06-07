@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Статистика
+{% endblock title %}
+
+{% block content %}
+    <h1>Статистика</h1>
+
+    <h2>Наиболее популярный фильм</h2>
+    <p>{{ popular_movie.showtime__movie__title }}</p>
+    <p>Количество билетов: {{ popular_movie.ticket_count }}</p>
+
+    <h2>Наиболее прибыльный фильм</h2>
+    <p>{{ profitable_movie.showtime__movie__title }}</p>
+    <p>Общая прибыль: {{ profitable_movie.total_profit }}</p>
+
+    <h2>Статистика возраста клиентов</h2>
+    <p>Средний возраст: {{ avg_age }}</p>
+    <p>Медианный возраст: {{ median_age }}</p>
+    
+    <h2>Статистика продаж</h2>
+    <p>Средняя сумма продаж: {{ avg_sales }}</p>
+    <p>Мода суммы продаж: {{ mode_sales }}</p>
+    <p>Медиана суммы продаж: {{ median_sales }}</p>
+{% endblock content %}

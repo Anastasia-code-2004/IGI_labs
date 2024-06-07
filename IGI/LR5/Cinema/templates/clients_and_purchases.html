@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Клиенты{% endblock title %}
+{% block content %}
+    <h1>Клиенты и их покупки</h1>
+    <table>
+        <tr>
+            <th>Клиент</th>
+            <th>Общая сумма покупок</th>
+        </tr>
+        {% for client, total_purchases in clients_and_purchases %}
+        <tr>
+            <td>{{ client.user.username }}</td>
+            <td>{{ total_purchases }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+{% endblock content %}

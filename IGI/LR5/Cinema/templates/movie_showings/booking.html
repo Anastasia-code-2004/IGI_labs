@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Бронирование</title>
+</head>
+<body>
+    <h1>Бронирование билетов на сеанс</h1>
+    <img src="{{ showtime.movie.poster.url }}" alt="" style="height:300px;">
+    <p>Фильм: {{ showtime.movie.title }}</p>
+    <p>Время начала: {{ showtime.start_time }}</p>
+    <p>Зал: {{ showtime.hall.name }}</p>
+    <p>Доступные места: {{ showtime.available_seats }}</p>
+    <p>Цена билета: {{ showtime.price }}</p>
+    <form method="post" action="{% url 'buy_ticket' showtime.id %}">
+        {% csrf_token %}
+        <label for="promo_code">Промокод:</label>
+        <input type="text" id="promo_code" name="promo_code">
+        <input type="submit" value="Купить билет">
+    </form>
+</body>
+</html>
